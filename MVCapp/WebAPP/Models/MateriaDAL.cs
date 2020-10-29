@@ -14,7 +14,7 @@ namespace WebAPP.Models
         {
             IDbConnection _conn = DBCommon.Conexion();
             _conn.Open();
-            SqlCommand _comand = new SqlCommand("CONSULTAR_ALUMNO", _conn as SqlConnection);
+            SqlCommand _comand = new SqlCommand("CONSULTAR_MATERIA", _conn as SqlConnection);
             _comand.CommandType = CommandType.StoredProcedure;
             IDataReader _reader = _comand.ExecuteReader();
             List<MateriaEN> _lista = new List<MateriaEN>();

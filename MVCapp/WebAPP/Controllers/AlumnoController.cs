@@ -9,12 +9,18 @@ namespace WebAPP.Controllers
 {
     public class AlumnoController : Controller
     {
+        AlumnoDAL _dal = new AlumnoDAL();
         // GET: Alumno
         public ActionResult Index()
         {
-            AlumnoDAL _dal = new AlumnoDAL();
-            ViewBag.Alumnos = _dal.ObtenerAlumnos().ToList();
             return View();
         }
+
+        [HttpPost]
+        public JsonResult ObtenerAlumnos()
+        {
+            return Json(_dal.ObtenerAlumnos().ToList());
+        }
+
     }
 }
