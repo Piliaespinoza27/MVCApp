@@ -9,6 +9,7 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
             method: 'Post',
             url: '../Alumno/ObtenerAlumnos',
         }).then(function respuesta(r) {
+            console.log(r);
             $scope.AlumnosData = r.data;
         });
     }
