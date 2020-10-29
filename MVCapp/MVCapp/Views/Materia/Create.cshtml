@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form id="datosMateria" action="/" method="post">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="form-group">
+                <label>Materia: </label>
+                <input type="text" name="nombre" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" onclick="guardarMateria();" class="btn btn-primary">Guardar</button>
+            <button type="button" onclick="regresar();" class="btn btn-success">Regresar</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function regresar() {
+        window.location.href = '@Url.Action("Index","Materia")';
+    }
+    function guardarMateria() {
+        if ($("input[name=nombre]").val() != "") {
+            var datos = $("#datosMateria").srialize();
+            $.ajax({
+                url: '@Url.Action("Guardar","Materia")',
+                type: 'POST',
+                data: datos,
+                success: function (data) {
+                    window.location.href = '@Url.Action("Index","Materia")';
+                }
+            });
+        } else {
+            var alerta = new dialog({
+                wrapper: document.body,
+                title: 'Campo vacio',
+                type: 'small',
+                content: '<p>Debe colocar el nombre de la materia</p>'
+            });
+            alerta.show();
+        }
+    }
+</script>

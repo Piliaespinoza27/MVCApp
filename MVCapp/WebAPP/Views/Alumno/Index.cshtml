@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+    var Alumnos = ViewBag.Alumnos;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Bootstrap/js/jquery-3.1.0.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.js"></script>
+    <script src="~/Bootstrap/js/angular.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">MVC APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">ALUMNOS <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">MATERIAS</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Alumnos</h1>
+                        <p class="lead">Aqui estara la lista de alumnos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>edad</th>
+                            <th>Materia</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Alumnos)
+                        {
+                            <tr>
+                                <td>@i.Id</td>
+                                <td>@i.Nombre</td>
+                                <td>@i.Apellido</td>
+                                <td>@i.Edad</td>
+                                <td>@i.NombreMateria</td>
+                                <td>
+                                    <button class="btn btn-primary">Modificar</button>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                        }
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
