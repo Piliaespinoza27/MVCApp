@@ -33,5 +33,22 @@ namespace WebAPP.Models
             _conn.Close();
             return _lista;
         }
+
+
+        public int EliminarAlumno(AlumnoEN en)
+        {
+            IDbConnection _conn = DBCommon.Conexion();
+            _conn.Open();
+            SqlCommand _comand = new SqlCommand("ELIMINAR_ALUMNO", _conn as SqlConnection);
+            _comand.CommandType = CommandType.StoredProcedure;
+            _comand.Parameters.Add(new SqlParameter("@ID", en.Id));
+            int r = _comand.ExecuteNonQuery();
+            
+            _conn.Close();
+            return r;
+        }
+
+
+
     }
 }

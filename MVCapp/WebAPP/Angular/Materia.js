@@ -1,34 +1,34 @@
 ﻿var app = angular.module("App", []); //App emcotrara el angular para disponer de el
 
-app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
+app.controller("Materia", function ($scope, $http) { // ejecutara el angular
 
-    
+
 
     $scope.ObtenerAlumnos = function () {
         $http({
             method: 'Post',
-            url: '../Alumno/ObtenerAlumnos',
+            url: '../Materia/ObtenerMateria',
         }).then(function respuesta(r) {
             console.log(r);
             $scope.AlumnosData = r.data;
         });
     }
-    $scope.ObtenerAlumnos();
+    $scope.ObtenerMateria();
 
 
-    $scope.EliminarAlumnos = function (id) {
+    $scope.EliminarMateria = function (id) {
         debugger;
         $http({
             method: 'Post',
-            url: '../Alumno/EliminarAlumnos',
+            url: '../Materia/EliminarMateria',
             data: {
-                Id:id
+                Id: id
             }
         }).then(function respuesta(r) {
             console.log(r);
             if (r == 0) {
                 alert("Registro eliminado");
-                $scope.ObtenerAlumnos();
+                $scope.ObtenerMateria();
             }
             else {
                 alert("Registro no eliminado");
@@ -37,4 +37,3 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
     }
 
 });
-

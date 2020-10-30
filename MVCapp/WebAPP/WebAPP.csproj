@@ -117,6 +117,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Angular\Alumno.js" />
+    <Content Include="Angular\angular.js" />
+    <Content Include="Angular\Materia.js" />
     <Content Include="Bootstrap\angularController\Alumno.js" />
     <Content Include="Bootstrap\css\bootstrap.css" />
     <Content Include="Bootstrap\js\angular.js" />
@@ -164,6 +167,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Alumno\Materia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
