@@ -17,7 +17,7 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
 
 
     $scope.EliminarAlumnos = function (id) {
-        debugger;
+
         $http({
             method: 'Post',
             url: '../Alumno/EliminarAlumnos',
@@ -32,6 +32,30 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
             }
             else {
                 alert("Registro no eliminado");
+            }
+        });
+    }
+
+
+    $scope.AgregarAlumnos = function () {
+        $http({
+            method: 'Post',
+            url: '../Alumno/AgregarAlumnos',
+            data: {
+                Id : '',
+                Nombre: $scope.Nombre,
+                Apellido: $scope.Apellido,
+                Edad: $scope.Edad,
+                Fk_Materia: $scope.Materia,
+            }
+        }).then(function respuesta(r) {
+            console.log(r);
+            if (r == 0) {
+                alert("Registro Agregado");
+               
+            }
+            else {
+                alert("Registro no Agregado");
             }
         });
     }

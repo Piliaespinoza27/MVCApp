@@ -42,8 +42,22 @@ namespace WebAPP.Models
             SqlCommand _comand = new SqlCommand("ELIMINAR_ALUMNO", _conn as SqlConnection);
             _comand.CommandType = CommandType.StoredProcedure;
             _comand.Parameters.Add(new SqlParameter("@ID", en.Id));
+            int r = _comand.ExecuteNonQuery();        
+            _conn.Close();
+            return r;
+        }
+
+        public int AgregarAlumno(AlumnoEN en)
+        {
+            IDbConnection _conn = DBCommon.Conexion();
+            _conn.Open();
+            SqlCommand _comand = new SqlCommand("AGREGAR_ALUMNO", _conn as SqlConnection);
+            _comand.CommandType = CommandType.StoredProcedure;
+            _comand.Parameters.Add(new SqlParameter("@NOMBRE", en.Nombre));
+            _comand.Parameters.Add(new SqlParameter("@APELLIDO", en.Apellido));
+            _comand.Parameters.Add(new SqlParameter("@EDAD", en.Edad));
+            _comand.Parameters.Add(new SqlParameter("@FK_MATERIA", en.Fk_Materia));
             int r = _comand.ExecuteNonQuery();
-            
             _conn.Close();
             return r;
         }

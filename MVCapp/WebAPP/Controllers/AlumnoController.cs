@@ -16,6 +16,12 @@ namespace WebAPP.Controllers
             return View();
         }
 
+        public ActionResult AgregarAlumno()
+        {
+            return View();
+        }
+
+
         public ActionResult Materia()
         {
             return View();
@@ -32,6 +38,12 @@ namespace WebAPP.Controllers
         public ActionResult EliminarAlumnos(AlumnoEN en)
         {
             return Content(Convert.ToString(_dal.EliminarAlumno(en)));
+        }
+
+        [HttpPost]
+        public ActionResult AgregarAlumnos(AlumnoEN en)
+        {
+            return Content(Convert.ToString(_dal.AgregarAlumno(en)));
         }
 
     }

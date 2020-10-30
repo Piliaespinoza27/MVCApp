@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "AgregarAlumno";
+}
+<script src="~/Angular/Alumno.js"></script>
+
+<div class="container" ng-controller="Alumno">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Agregar Alumnos</h1>
+                    <p class="lead">Cualquier descripcion.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="row">
+        <div class="col-md-12 form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" ng-model="Nombre" />
+        </div>
+        <div class="col-md-12 form-group">
+            <label>Apellido</label>
+            <input type="text"  class="form-control" ng-model="Apellido"  />
+        </div>
+        <div class="col-md-12 form-group">
+            <label>Edad</label>
+            <input type="number" class="form-control" ng-model="Edad" />
+        </div>
+        <div class="col-md-12 form-group">
+            <label>FK_Materia</label>
+            <input type="number" class="form-control" ng-model="Fk_Materia" />
+        </div>
+        <div class="col-md-12 form-group">
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="AgregarAlumnos()" >Agregar</button>
+            </p>
+        </div>
+    </form>
+
+</div>
