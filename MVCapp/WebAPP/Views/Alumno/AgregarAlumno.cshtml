@@ -32,7 +32,11 @@
         </div>
         <div class="col-md-12 form-group">
             <label>FK_Materia</label>
-            <input type="number" class="form-control" ng-model="Fk_Materia" />
+            <select class="form-control" ng-model="Fk_Materia" 
+                    ng-options="materiasData as materiasData.Nombre for materiasData in MateriasData track materiasData.Id">
+                <option value="" >Seleccionar</option>
+              
+            </select>
         </div>
         <div class="col-md-12 form-group">
             <p class="text-right">

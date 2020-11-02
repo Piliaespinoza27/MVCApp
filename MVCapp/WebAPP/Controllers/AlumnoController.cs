@@ -10,6 +10,7 @@ namespace WebAPP.Controllers
     public class AlumnoController : Controller
     {
         AlumnoDAL _dal = new AlumnoDAL();
+        MateriaDAL _dalM = new MateriaDAL();
         // GET: Alumno
         public ActionResult Index()
         {
@@ -44,6 +45,12 @@ namespace WebAPP.Controllers
         public ActionResult AgregarAlumnos(AlumnoEN en)
         {
             return Content(Convert.ToString(_dal.AgregarAlumno(en)));
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerMaterias()
+        {
+            return Json(_dalM.ObtenerMaterias().ToList());
         }
 
     }

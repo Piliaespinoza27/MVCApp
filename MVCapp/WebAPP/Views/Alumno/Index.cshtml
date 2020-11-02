@@ -19,6 +19,9 @@
 
     <div class="row">
         <div class="col-md-12">
+            <input type="text" placeholder="Buscar" class="form-control" ng-model="tBuscador" />
+        </div>
+        <div class="col-md-12">
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -31,13 +34,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="i in AlumnosData">
+                    <tr ng-repeat="i in AlumnosData | filter:{Nombre : tBuscador } | orderBy:Id">
                         <td>{{i.Id}}</td>
                         <td>{{i.Nombre}}</td>
                         <td>{{i.Apellido}}</td>
                         <td>{{i.Edad}}</td>
                         <td>{{i.Fk_Materia}} - {{i.NombreMateria}}</td>
                         <td>
+                            <button type="button" class="btn btn-primary" ng-click="SeleccionarAlumnosParaModificar(i)">Modificar</button>
                             <button type="button" class="btn btn-danger" ng-click="EliminarAlumnos(i.Id)">Eliminar</button>
                         </td>
                     </tr>
@@ -46,6 +50,53 @@
             </table>
         </div>
     </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="row">
+                        <div class="col-md-12 form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" ng-model="mNombre" />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Apellido</label>
+                            <input type="text" class="form-control" ng-model="mApellido" />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Edad</label>
+                            <input type="number" class="form-control" ng-model="mEdad" />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>FK_Materia {{mFk_Materia}}</label>
+                            <select class="form-control" ng-model="mFk_Materia">
+                                <option ng-repeat="i in MateriasData" value="{{i.Id}}">{{i.Nombre}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <p class="text-right">
+                                <button type="button" class="btn btn-primary" ng-click="AgregarAlumnos()">Agregar</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>            
+            </div>
+        </div>
+    </div>
+
+
 
 </div>
 

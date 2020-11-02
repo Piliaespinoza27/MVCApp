@@ -26,7 +26,7 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
             }
         }).then(function respuesta(r) {
             console.log(r);
-            if (r == 0) {
+            if (r.data == '1') {
                 alert("Registro eliminado");
                 $scope.ObtenerAlumnos();
             }
@@ -46,18 +46,46 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
                 Nombre: $scope.Nombre,
                 Apellido: $scope.Apellido,
                 Edad: $scope.Edad,
-                Fk_Materia: $scope.Materia,
+                Fk_Materia: $scope.Fk_Materia
             }
         }).then(function respuesta(r) {
             console.log(r);
-            if (r == 0) {
+            if (r.data == '1') {
                 alert("Registro Agregado");
+                $scope.Nombre = '';
+                $scope.Apellido = '';
+                $scope.Edad = '';
+                $scope.Fk_Materia = '';
+                window.location.href = "../Alumno/Index";
                
             }
             else {
                 alert("Registro no Agregado");
             }
         });
+    }
+
+    $scope.ObtenerMaterias = function () {
+        $http({
+            method: 'Post',
+            url: '../Alumno/ObtenerMaterias',
+        }).then(function respuesta(r) {
+            console.log(r);
+            $scope.MateriasData = r.data;
+        });
+    }
+
+    $scope.ObtenerMaterias();
+
+
+    $scope.SeleccionarAlumnosParaModificar = function (i) {
+      //  $scope.ObtenerMaterias();
+        $scope.mId = i.Id;
+        $scope.mNombre = i.Nombre;
+        $scope.mApellido = i.Apellido;
+        $scope.mEdad = i.Edad;
+        $scope.mFk_Materia = i.Fk_Materia;
+        $('#modalModificar').modal('show');
     }
 
 });
