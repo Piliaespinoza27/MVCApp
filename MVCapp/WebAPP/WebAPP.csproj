@@ -170,8 +170,6 @@
     <Content Include="Views\Alumno\Materia.cshtml" />
     <Content Include="Views\Alumno\AgregarAlumno.cshtml" />
     <Content Include="Views\Alumno\AgregarMateria.cshtml" />
-    <Content Include="Views\Materia\AgregarMateria.cshtml" />
-    <Content Include="Views\Materia\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Materia\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

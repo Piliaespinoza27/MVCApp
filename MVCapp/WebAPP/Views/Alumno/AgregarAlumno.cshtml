@@ -33,9 +33,8 @@
         <div class="col-md-12 form-group">
             <label>FK_Materia</label>
             <select class="form-control" ng-model="Fk_Materia" 
-                   >
+                    ng-options="materiasData as materiasData.Nombre for materiasData in MateriasData track materiasData.Id">
                 <option value="" >Seleccionar</option>
-                <option ng-repeat="m in MateriasData" value="{{m.Id}}">{{m.Nombre}}</option>
               
             </select>
         </div>

@@ -47,6 +47,7 @@ namespace WebAPP.Models
             _conn.Open();
             SqlCommand _comand = new SqlCommand("[AGREGAR_MATERIA]", _conn as SqlConnection);
             _comand.CommandType = CommandType.StoredProcedure;
+            _comand.Parameters.Add(new SqlParameter("@id", en.Id));
             _comand.Parameters.Add(new SqlParameter("@nombre", en.Nombre));
             int r = _comand.ExecuteNonQuery();
             _conn.Close();

@@ -70,7 +70,7 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
             method: 'Post',
             url: '../Alumno/ObtenerMaterias',
         }).then(function respuesta(r) {
-            console.log('materias', r);
+            console.log(r);
             $scope.MateriasData = r.data;
         });
     }

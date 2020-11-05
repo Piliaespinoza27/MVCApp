@@ -7,10 +7,10 @@ app.controller("Materia", function ($scope, $http) { // ejecutara el angular
     $scope.ObtenerMateria = function () {
         $http({
             method: 'Post',
-            url: '../Materia/ObtenerMaterias',
+            url: '../Materia/ObtenerMateria',
         }).then(function respuesta(r) {
             console.log(r);
-            $scope.MateriasData = r.data;
+            $scope.MateriaData = r.data;
         });
     }
     $scope.ObtenerMateria();
@@ -25,7 +25,7 @@ app.controller("Materia", function ($scope, $http) { // ejecutara el angular
             }
         }).then(function respuesta(r) {
             console.log(r);
-            if (r.data == 1) {
+            if (r == 0) {
                 alert("Registro eliminado");
                 $scope.ObtenerMateria();
             }
@@ -57,11 +57,21 @@ app.controller("Materia", function ($scope, $http) { // ejecutara el angular
         });
     }
 
+    $scope.ObtenerMaterias = function () {
+        $http({
+            method: 'Post',
+            url: '../Materia/ObtenerMaterias',
+        }).then(function respuesta(r) {
+            console.log(r);
+            $scope.MateriasData = r.data;
+        });
+    }
+
+    $scope.ObtenerMaterias();
 
 
-
-    $scope.SeleccionarMateriaParaModificar = function (i) {
-      
+    $scope.SeleccionarMateriasParaModificar = function (i) {
+        //  $scope.ObtenerMaterias();
         $scope.mId = i.Id;
         $scope.mNombre = i.Nombre;
         $('#modalModificar').modal('show');
@@ -69,7 +79,7 @@ app.controller("Materia", function ($scope, $http) { // ejecutara el angular
 
     $scope.ModificarMateria= function () {
         console.log("snkladjklasjdklasd");
-        
+        debugger;
         $http({
             method: 'Post',
             url: '../Materia/ModificarMateria',
@@ -79,21 +89,17 @@ app.controller("Materia", function ($scope, $http) { // ejecutara el angular
             }
         }).then(function respuesta(r) {
             console.log(r);
-            debugger;
             if (r.data == '1') {
                 alert("Registro Modificado");
                 $scope.mNombre = '';
-                $scope.ObtenerMateria();
+                $scope.ObtenerMaterias();
                 $('#modalModificar').modal('hide');
-
-                
 
             }
             else {
                 alert("Registro no Modificado");
             }
         });
-       
     }
 
 });
