@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Angular/Materia.js"></script>
+
+
+<div class="container" ng-controller="Materia">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Materias</h1>
+                    <p class="lead">Consultar materias.</p>
+                    <p>
+                        <a href="../Materia/AgregarMateria" class="btn btn-success">Agregar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" placeholder="Buscar" class="form-control" ng-model="tBuscador" />
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombres</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="i in MateriasData | filter:{Nombre : tBuscador } | orderBy:Id">
+                        <td>{{i.Id}}</td>
+                        <td>{{i.Nombre}}</td>         
+                        <td>
+                            <button type="button" class="btn btn-primary" ng-click="SeleccionarMateriaParaModificar(i)">Modificar</button>
+                            <button type="button" class="btn btn-danger" ng-click="EliminarMateria(i.Id)">Eliminar</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="row">
+                        <div class="col-md-12 form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" ng-model="mNombre" />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <p class="text-right">
+                                <button type="button" class="btn btn-primary" ng-click="ModificarMateria()">Modificar</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+

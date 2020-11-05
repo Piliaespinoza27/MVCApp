@@ -31,7 +31,7 @@ namespace WebAPP.Controllers
         [HttpPost]
         public JsonResult ObtenerMaterias()
         {
-            return Json(_dalM.ObtenerMaterias().ToList());
+            return Json(_dalM.ObtenerMaterias());
         }
 
         [HttpPost]
