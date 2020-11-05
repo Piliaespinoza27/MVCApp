@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "AgregarMateria";
+}
+<script src="~/Angular/Materia.js"></script>
+
+<div class="container" ng-controller="Materia">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Agregar Materias</h1>
+                    <p class="lead">Ingrese una materia</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="row">
+        <div class="col-md-12 form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" ng-model="nombre" />
+        </div>
+        <div class="col-md-12 form-group">
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="AgregarMateria()" >Agregar</button>
+            </p>
+        </div>
+    </form>
+
+</div>

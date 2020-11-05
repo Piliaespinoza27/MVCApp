@@ -88,5 +88,35 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
         $('#modalModificar').modal('show');
     }
 
+    $scope.Modificar_Alumno = function () {
+        console.log("snkladjklasjdklasd");
+        debugger;
+        $http({
+            method: 'Post',
+            url: '../Alumno/Modificar_Alumno',
+            data: {
+                Id: $scope.mId,
+                Nombre: $scope.mNombre,
+                Apellido: $scope.mApellido,
+                Edad: $scope.mEdad,
+                Fk_Materia: $scope.mFk_Materia
+            }
+        }).then(function respuesta(r) {
+            console.log(r);
+            if (r.data == '1') {
+                alert("Registro Modificado");
+                $scope.mNombre = '';
+                $scope.mApellido = '';
+                $scope.mEdad = '';
+                $scope.mFk_Materia = '';
+                $scope.ObtenerAlumnos();
+                $('#modalModificar').modal('hide');
+
+            }
+            else {
+                alert("Registro no Modificado");
+            }
+        });
+    }
 });
 

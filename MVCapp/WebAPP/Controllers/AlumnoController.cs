@@ -53,5 +53,10 @@ namespace WebAPP.Controllers
             return Json(_dalM.ObtenerMaterias().ToList());
         }
 
+        [HttpPost]
+        public ActionResult Modificar_Alumno (AlumnoEN en)
+        {
+            return Content(Convert.ToString(_dal.Modificar_Alumno(en)));
+        }
     }
 }

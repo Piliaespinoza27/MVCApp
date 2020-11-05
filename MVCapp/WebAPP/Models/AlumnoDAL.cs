@@ -63,6 +63,23 @@ namespace WebAPP.Models
         }
 
 
+        public int Modificar_Alumno(AlumnoEN en)
+        {
+            IDbConnection _conn = DBCommon.Conexion();
+            _conn.Open();
+            SqlCommand _comand = new SqlCommand("Modificar_Alumno", _conn as SqlConnection);
+            _comand.CommandType = CommandType.StoredProcedure;
+            _comand.Parameters.Add(new SqlParameter("@id", en.Id));
+            _comand.Parameters.Add(new SqlParameter("@nombre", en.Nombre));
+            _comand.Parameters.Add(new SqlParameter("@apellido", en.Apellido));
+            _comand.Parameters.Add(new SqlParameter("@edad", en.Edad));
+            _comand.Parameters.Add(new SqlParameter("@fk_materia", en.Fk_Materia));
+            int r = _comand.ExecuteNonQuery();
+            _conn.Close();
+            return r;
+        }
+
+
 
     }
 }
