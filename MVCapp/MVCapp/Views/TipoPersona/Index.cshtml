@@ -1,16 +1,21 @@
 ﻿
 @{
-    ViewBag.Title = "Materia";
+    ViewBag.Title = "Index";
 }
-<script src="~/Angular/Materia.js"></script>
 
-<div class="container" ng-controller="Materia">
+<script src="~/Angular/TipoPersona.js"></script>
+
+
+<div class="container" ng-controller="TipoPersona">
     <div class="row">
         <div class="col-md-12">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4">Materia</h1>
-                    <p class="lead">Aqui estara la lista de todas las Materias.</p>
+                    <h1 class="display-4">Tipo de Persona</h1>
+                    <p class="lead">Aqui estara la lista de tipos d personas.</p>
+                    <p>
+                        <a href="../TipoPersona/AgregarTipoPersona" class="btn btn-success">Agregar</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -30,12 +35,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="i in MateriaData | filter:{Nombre : tBuscador } | orderBy:Id">
+                    <tr ng-repeat="i in TipoPersonasData | filter:{Nombre : tBuscador } | orderBy:Id">
                         <td>{{i.Id}}</td>
                         <td>{{i.Nombre}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary" ng-click="SeleccionarAlumnosParaModificar(i)">Modificar</button>
-                            <button type="button" class="btn btn-danger" ng-click="EliminarAlumnos(i.Id)">Eliminar</button>
+                            <button type="button" class="btn btn-primary" ng-click="SeleccionarTipoPersonaParaModificar(i)">Modificar</button>
+                            <button type="button" class="btn btn-danger" ng-click="EliminarTipoPersona(i.Id)">Eliminar</button>
                         </td>
                     </tr>
 
@@ -64,9 +69,10 @@
                             <label>Nombre</label>
                             <input type="text" class="form-control" ng-model="mNombre" />
                         </div>
+                 
                         <div class="col-md-12 form-group">
                             <p class="text-right">
-                                <button type="button" class="btn btn-primary" ng-click="Modificar_()">Modificar</button>
+                                <button type="button" class="btn btn-primary" ng-click="ModificarTipoPersona()">Modificar</button>
                             </p>
                         </div>
                     </form>
@@ -78,4 +84,3 @@
 
 
 </div>
-

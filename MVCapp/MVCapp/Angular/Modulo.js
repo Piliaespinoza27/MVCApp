@@ -1,34 +1,34 @@
 ﻿var app = angular.module("App", []); //App emcotrara el angular para disponer de el
 
-app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
+app.controller("Modulo", function ($scope, $http) { // ejecutara el angular
 
-    
 
-    $scope.ObtenerAlumnos = function () {
+
+    $scope.ObtenerModulo = function () {
         $http({
             method: 'Post',
-            url: '../Alumno/ObtenerAlumnos',
+            url: '../Modulo/ObtenerModulo',
         }).then(function respuesta(r) {
             console.log(r);
-            $scope.AlumnosData = r.data;
+            $scope.ModulosData = r.data;
         });
     }
-    $scope.ObtenerAlumnos();
+    $scope.ObtenerModulo();
 
 
-    $scope.EliminarAlumnos = function (id) {
+    $scope.EliminarModulo = function (id) {
 
         $http({
             method: 'Post',
-            url: '../Alumno/EliminarAlumnos',
+            url: '../Modulo/EliminarModulo',
             data: {
-                Id:id
+                Id: id
             }
         }).then(function respuesta(r) {
             console.log(r);
             if (r.data == '1') {
                 alert("Registro eliminado");
-                $scope.ObtenerAlumnos();
+                $scope.ObtenerModulo();
             }
             else {
                 alert("Registro no eliminado");
@@ -37,80 +37,70 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
     }
 
 
-    $scope.AgregarAlumnos = function () {
+    $scope.AgregarModulo = function () {
         $http({
             method: 'Post',
-            url: '../Alumno/AgregarAlumnos',
+            url: '../Modulo/AgregarModulo',
             data: {
-                Id : '',
+                Id: '',
                 Nombre: $scope.Nombre,
-                Apellido: $scope.Apellido,
-                Edad: $scope.Edad,
-                Fk_Materia: $scope.Fk_Materia
+                Id_Persona: $scope.Id_Persona
             }
         }).then(function respuesta(r) {
             console.log(r);
-            if (r.data == '1') {
+            if (r.data == 1) {
                 alert("Registro Agregado");
                 $scope.Nombre = '';
-                $scope.Apellido = '';
-                $scope.Edad = '';
-                $scope.Fk_Materia = '';
-                window.location.href = "../Alumno/Index";
-               
+                $scope.Id_Persona = '';
+                window.location.href = "../Modulo/Index";
+
             }
             else {
                 alert("Registro no Agregado");
             }
         });
     }
+    $scope.ObtenerModulo();
 
-    $scope.ObtenerMaterias = function () {
+
+    $scope.ObtenerPersona = function () {
         $http({
             method: 'Post',
-            url: '../Alumno/ObtenerMaterias',
+            url: '../Modulo/ObtenerPersona',
         }).then(function respuesta(r) {
-            console.log('materias', r);
-            $scope.MateriasData = r.data;
+            console.log('Persona', r);
+            $scope.PersonasData = r.data;
         });
     }
 
-    $scope.ObtenerMaterias();
+    $scope.ObtenerPersona();
 
-
-    $scope.SeleccionarAlumnosParaModificar = function (i) {
-      //  $scope.ObtenerMaterias();
+    $scope.SeleccionarModuloParaModificar = function (i) {
+        //  $scope.ObtenerMaterias();
         $scope.mId = i.Id;
         $scope.mNombre = i.Nombre;
-        $scope.mApellido = i.Apellido;
-        $scope.mEdad = i.Edad;
-        $scope.mFk_Materia = i.Fk_Materia;
+        $scope.mId_Persona = i.Id_Persona;
         $('#modalModificar').modal('show');
     }
 
 
-    $scope.Modificar_Alumno = function () {
+    $scope.ModificarModulo = function () {
         console.log("snkladjklasjdklasd");
         debugger;
         $http({
             method: 'Post',
-            url: '../Alumno/Modificar_Alumno',
+            url: '../Modulo/ModificarModulo',
             data: {
                 Id: $scope.mId,
                 Nombre: $scope.mNombre,
-                Apellido: $scope.mApellido,
-                Edad: $scope.mEdad,
-                Fk_Materia: $scope.mFk_Materia
+                Id_Persona: $scope.mId_Persona
             }
         }).then(function respuesta(r) {
             console.log(r);
             if (r.data == '1') {
                 alert("Registro Modificado");
                 $scope.mNombre = '';
-                $scope.mApellido = '';
-                $scope.mEdad = '';
-                $scope.mFk_Materia = '';
-                $scope.ObtenerAlumnos();
+                $scope.mId_Persona = '';
                 $('#modalModificar').modal('hide');
 
             }
@@ -120,4 +110,3 @@ app.controller("Alumno", function ($scope, $http) { // ejecutara el angular
         });
     }
 });
-

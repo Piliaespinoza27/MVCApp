@@ -1,20 +1,20 @@
 ﻿
 @{
     ViewBag.Title = "Index";
- 
 }
-<script src="~/Angular/Alumno.js"></script>
+
+<script src="~/Angular/Persona.js"></script>
 
 
-<div class="container" ng-controller="Alumno">
+<div class="container" ng-controller="Persona">
     <div class="row">
         <div class="col-md-12">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4">Alumnos</h1>
-                    <p class="lead">Aqui estara la lista de alumnos.</p>
+                    <h1 class="display-4">Personas</h1>
+                    <p class="lead">Aqui estara la lista de todas las personas.</p>
                     <p>
-                        <a href="../Alumno/AgregarAlumno" class="btn btn-success">Agregar</a>
+                        <a href="../Persona/AgregarPersona" class="btn btn-success">Agregar</a>
                     </p>
                 </div>
             </div>
@@ -32,21 +32,19 @@
                         <th>Id</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>edad</th>
-                        <th>Materia</th>
+                        <th>Id_Tipo_Persona</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="i in AlumnosData | filter:{Nombre : tBuscador } | orderBy:Id">
+                    <tr ng-repeat="i in PersonasData | filter:{Nombres : tBuscador } | orderBy:Id">
                         <td>{{i.Id}}</td>
-                        <td>{{i.Nombre}}</td>
-                        <td>{{i.Apellido}}</td>
-                        <td>{{i.Edad}}</td>
-                        <td>{{i.Fk_Materia}} - {{i.NombreMateria}}</td>
+                        <td>{{i.Nombres}}</td>
+                        <td>{{i.Apellidos}}</td>
+                        <td>{{i.Id_Tipo_Persona}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary" ng-click="SeleccionarAlumnosParaModificar(i)">Modificar</button>
-                            <button type="button" class="btn btn-danger" ng-click="EliminarAlumnos(i.Id)">Eliminar</button>
+                            <button type="button" class="btn btn-primary" ng-click="SeleccionarPersonaParaModificar(i)">Modificar</button>
+                            <button type="button" class="btn btn-danger" ng-click="EliminarPersona(i.Id)">Eliminar</button>
                         </td>
                     </tr>
 
@@ -72,30 +70,26 @@
                 <div class="modal-body">
                     <form class="row">
                         <div class="col-md-12 form-group">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" ng-model="mNombre" />
+                            <label>Nombres</label>
+                            <input type="text" class="form-control" ng-model="mNombres" />
                         </div>
                         <div class="col-md-12 form-group">
-                            <label>Apellido</label>
-                            <input type="text" class="form-control" ng-model="mApellido" />
+                            <label>Apellidos</label>
+                            <input type="text" class="form-control" ng-model="mApellidos" />
                         </div>
                         <div class="col-md-12 form-group">
-                            <label>Edad</label>
-                            <input type="number" class="form-control" ng-model="mEdad" />
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label>FK_Materia {{mFk_Materia}}</label>
-                            <select class="form-control" ng-model="mFk_Materia">
-                                <option ng-repeat="i in MateriasData" value="{{i.Id}}">{{i.Nombre}} </option>
+                            <label>FK_Materia {{mId_Tipo_Persona}}</label>
+                            <select class="form-control" ng-model="mId_Tipo_Persona">
+                                <option ng-repeat="i in TipoPersonasData" value="{{i.Id}}">{{i.Nombre}} </option>
                             </select>
                         </div>
                         <div class="col-md-12 form-group">
                             <p class="text-right">
-                                <button type="button" class="btn btn-primary" ng-click="Modificar_Alumno()">Modificar</button>
+                                <button type="button" class="btn btn-primary" ng-click="ModificarPersona()">Modificar</button>
                             </p>
                         </div>
                     </form>
-                </div>            
+                </div>
             </div>
         </div>
     </div>
@@ -103,7 +97,6 @@
 
 
 </div>
-
 
 
 

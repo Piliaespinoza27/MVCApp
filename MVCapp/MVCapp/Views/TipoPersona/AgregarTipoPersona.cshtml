@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "AGREGAR_TIPOPERSONA";
+}
+
+<script src="~/Angular/TipoPersona.js"></script>
+
+<div class="container" ng-controller="TipoPersona">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Agregar un tipo de persona.</h1>
+                    <p class="lead">Ingrese tipo de persona</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="row">
+        <div class="col-md-12 form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" ng-model="Nombre" />
+        </div>
+        <div class="col-md-12 form-group">
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="AgregarTipoPersona()">Agregar</button>
+            </p>
+        </div>
+    </form>
+
+</div>

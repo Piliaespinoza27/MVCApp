@@ -117,6 +117,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Angular\Modulo.js" />
+    <Content Include="Angular\Persona.js" />
+    <Content Include="Angular\TipoPersona.js" />
+    <Content Include="Angular\angular.js" />
+    <Content Include="Bootstrap\css\bootstrap.css" />
+    <Content Include="Bootstrap\js\angular.js" />
+    <Content Include="Bootstrap\js\bootstrap.js" />
+    <Content Include="Bootstrap\js\jquery-3.1.0.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -135,12 +143,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\MateriaController.cs" />
+    <Compile Include="Controllers\ModuloController.cs" />
+    <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\TipoPersonaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbConection.cs" />
-    <Compile Include="Models\Materia.cs" />
+    <Compile Include="Models\DBCommon.cs" />
+    <Compile Include="Models\ModuloDAL.cs" />
+    <Compile Include="Models\ModuloEN.cs" />
+    <Compile Include="Models\PersonaDAL.cs" />
+    <Compile Include="Models\PersonaEN.cs" />
+    <Compile Include="Models\TipoPersonaDAL.cs" />
+    <Compile Include="Models\TipoPersonaEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,13 +166,16 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Materia\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Materia\Create.cshtml" />
-    <Content Include="Views\Materia\Update.cshtml" />
+    <Content Include="Views\TipoPersona\Index.cshtml" />
+    <Content Include="Views\TipoPersona\AgregarTipoPersona.cshtml" />
+    <Content Include="Views\Persona\Index.cshtml" />
+    <Content Include="Views\Persona\AgregarPersona.cshtml" />
+    <Content Include="Views\Modulo\Index.cshtml" />
+    <Content Include="Views\Modulo\AgregarModulo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -167,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Bootstrap\angularController\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

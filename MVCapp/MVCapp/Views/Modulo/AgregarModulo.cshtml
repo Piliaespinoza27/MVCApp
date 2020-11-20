@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "AgregarModulo";
+}
+
+<script src="~/Angular/Modulo.js"></script>
+
+<div class="container" ng-controller="Modulo">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Agregar Modulo</h1>
+                    <p class="lead">Ingrese los datos siguientes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="row">
+        <div class="col-md-12 form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" ng-model="Nombre" />
+        </div>
+     
+        <div class="col-md-12 form-group">
+            <label>Persona</label>
+            <select class="form-control" ng-model="Id_Persona">
+                <option value="">Seleccionar</option>
+                <option ng-repeat="m in PersonasData" value="{{m.Id}}">{{m.Nombres}}</option>
+
+            </select>
+        </div>
+        <div class="col-md-12 form-group">
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="AgregarModulo()">Agregar</button>
+            </p>
+        </div>
+    </form>
+
+</div>
+

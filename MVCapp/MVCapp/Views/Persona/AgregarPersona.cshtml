@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "AgregarPersona";
+}
+
+<script src="~/Angular/Persona.js"></script>
+
+<div class="container" ng-controller="Persona">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Agregar Persona</h1>
+                    <p class="lead">Ingrese los datos siguientes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="row">
+        <div class="col-md-12 form-group">
+            <label>Nombres</label>
+            <input type="text" class="form-control" ng-model="Nombres" />
+        </div>
+        <div class="col-md-12 form-group">
+            <label>Apellidos</label>
+            <input type="text" class="form-control" ng-model="Apellidos" />
+        </div>
+        <div class="col-md-12 form-group">
+            <label>Id_Tipo_Persona</label>
+            <select class="form-control" ng-model="Id_Tipo_Persona">
+                <option value="">Seleccionar</option>
+                <option ng-repeat="m in TipoPersonasData" value="{{m.Id}}">{{m.Nombre}}</option>
+
+            </select>
+        </div>
+        <div class="col-md-12 form-group">
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="AgregarPersona()">Agregar</button>
+            </p>
+        </div>
+    </form>
+
+</div>
